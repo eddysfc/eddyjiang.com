@@ -1,15 +1,15 @@
 ---
 interface Props {
-    type: string;
+    heading: string;
     title: string;
-    body?: string;
+    body: string;
     href?: string;
 }
-const { type, title, body, href } = Astro.props;
+const { heading, title, body, href } = Astro.props;
 ---
 
 <div class="w-[500px] border border-gray-300 shadow-lg rounded-lg px-8 py-6">
-    <div class="text-3xl font-semibold">Latest {type}:</div>
+    <div class="text-3xl font-semibold">{heading}</div>
     <div class="text-2xl text-blue-500 mt-6">{title}</div>
     <div class="text-xl mt-2">{body}</div>
     <a href={href}>
