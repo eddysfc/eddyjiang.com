@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 
-type Props = {}
 
-const TypingIntro = (props: Props) => {
+const TypingIntro = () => {
 
     const words: string[] = ["student", "developer", "researcher"];
 
