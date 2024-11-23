@@ -1,7 +1,39 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const posts = await Astro.glob("../content/posts/**/*.mdx");
 ---
 
 <Layout title="Posts">
-    <div>Posts</div>
+    <div class="flex justify-center">
+        <div class="w-[1100px]">
+            <h1 class="text-5xl font-semibold">Posts</h1>
+            <div class="mt-8">
+                <p class="text-2xl leading-relaxed">
+                    Here, you can find a collection of writings I've done about
+                    random topics ___. I try to make these on a monthly scale
+                    (maybe I'll make a mailing list if ) If something of this
+                    piques your interest feel free to react out through the
+                    Contact page!
+                </p>
+                {
+                    posts.map((post) => (
+                        <article class="mt-20 border border-gray-300 shadow-lg rounded-lg px-12 py-8">
+                            <h2 class="text-4xl text-blue-500">
+                                {post.frontmatter.title}
+                            </h2>
+                            <p class="mt-2 text-xl">{post.frontmatter.date}</p>
+                            <p class="mt-6 text-2xl leading-relaxed">
+                                {post.frontmatter.description}
+                            </p>
+                            <a href={post.url} class="text-2xl">
+                                <button class="mt-6 text-white bg-blue-500 px-4 py-1 rounded-lg hover:bg-blue-400">
+                                    Read More
+                                </button>
+                            </a>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
 </Layout>
