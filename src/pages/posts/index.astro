@@ -2,6 +2,15 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 const posts = await getCollection("posts");
+
+const formatDate = (date: Date) => {
+    const formattedDate = new Intl.DateTimeFormat("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    }).format(date);
+    return formattedDate;
+};
 ---
 
 <Layout title="Posts">
@@ -10,19 +19,22 @@ const posts = await getCollection("posts");
             <h1 class="text-5xl font-semibold">Posts</h1>
             <div class="mt-8">
                 <p class="text-2xl leading-relaxed">
-                    Here, you can find a collection of writings I've done about
-                    random topics ___. I try to make these on a monthly scale
-                    (maybe I'll make a mailing list if ) If something of this
-                    piques your interest feel free to react out through the
-                    Contact page!
+                    Here, you can find a collection of writings about my
+                    projects and various other topics that have piqued my
+                    interest. I try (keyword: try) to make these monthly, so
+                    please be patient while I struggle to put words on paper. In
+                    the meantime, feel free to reach out about anything you see
+                    here through the Contact page!
                 </p>
                 {
                     posts.map((post) => (
-                        <article class="mt-20 border border-gray-300 shadow-lg rounded-lg px-12 py-8">
+                        <article class="mt-12 mb-16 border border-gray-300 shadow-lg rounded-lg px-12 py-8">
                             <h2 class="text-4xl text-blue-500">
                                 {post.data.title}
                             </h2>
-                            <p class="mt-2 text-xl">{post.data.date}</p>
+                            <p class="mt-2 text-xl">
+                                {formatDate(post.data.date)}
+                            </p>
                             <p class="mt-6 text-2xl leading-relaxed">
                                 {post.data.description}
                             </p>
