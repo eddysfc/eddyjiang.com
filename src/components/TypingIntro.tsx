@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 const TypingIntro = () => {
 
-    const words: string[] = ["student", "developer", "researcher"];
+    const words: string[] = ["student", "developer", "researcher", "SWE"];
 
     const [curWord, setCurWord] = useState(words[0]);
     const [wordPos, setWordPos] = useState(0);
