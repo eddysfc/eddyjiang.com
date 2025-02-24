@@ -5,7 +5,7 @@ const TypingIntro = () => {
 
     const words: string[] = ["student", "developer", "researcher", "SWE"];
 
-    const [curWord, setCurWord] = useState(words[0]);
+    const [curWord, setCurWord] = useState(words[Math.floor(Math.random() * words.length)]);
     const [wordPos, setWordPos] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const [isPaused, setIsPaused] = useState(false);

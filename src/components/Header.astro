@@ -1,70 +1,29 @@
+---
+import HeaderLink from "../components/HeaderLink";
+import BigHeaderLink from "../components/BigHeaderLink";
+const currentPage = Astro.url.pathname;
+---
+
 <header class="flex justify-center items-center mt-4 space-x-24">
     <div class="text-2xl space-x-24">
-        <a href="/about">
-            <button class="relative group">
-                About
-                <span
-                    class="absolute bottom-0 translate-y-0.5 left-1/2 h-0.5 w-0 bg-black transition-all duration-300 ease-out group-hover:left-0 group-hover:w-full"
-                ></span>
-            </button>
-        </a>
-
-        <a href="/projects">
-            <button class="relative group">
-                Projects
-                <span
-                    class="absolute bottom-0 translate-y-0.5 left-1/2 h-0.5 w-0 bg-black transition-all duration-300 ease-out group-hover:left-0 group-hover:w-full"
-                ></span>
-            </button>
-        </a>
-
-        <a href="/research">
-            <button class="relative group">
-                Research
-                <span
-                    class="absolute bottom-0 translate-y-0.5 left-1/2 h-0.5 w-0 bg-black transition-all duration-300 ease-out group-hover:left-0 group-hover:w-full"
-                ></span>
-            </button>
-        </a>
+        <HeaderLink text="About" link="/about" currentPage={currentPage} />
+        <HeaderLink
+            text="Projects"
+            link="/projects"
+            currentPage={currentPage}
+        />
+        <HeaderLink
+            text="Research"
+            link="/research"
+            currentPage={currentPage}
+        />
     </div>
 
-    <div class="text-4xl">
-        <a href="/">
-            <button class="relative group">
-                Eddy Jiang
-                <span
-                    class="absolute bottom-0 translate-y-1 left-1/2 h-0.5 w-0 bg-black transition-all duration-300 ease-out group-hover:left-0 group-hover:w-full"
-                ></span>
-            </button>
-        </a>
-    </div>
+    <BigHeaderLink text="Eddy Jiang" link="/" currentPage={currentPage} />
 
     <div class="text-2xl space-x-24">
-        <a href="/posts">
-            <button class="relative group">
-                Posts
-                <span
-                    class="absolute bottom-0 translate-y-0.5 left-1/2 h-0.5 w-0 bg-black transition-all duration-300 ease-out group-hover:left-0 group-hover:w-full"
-                ></span>
-            </button>
-        </a>
-
-        <a href="/resume">
-            <button class="relative group">
-                Resume
-                <span
-                    class="absolute bottom-0 translate-y-0.5 left-1/2 h-0.5 w-0 bg-black transition-all duration-300 ease-out group-hover:left-0 group-hover:w-full"
-                ></span>
-            </button>
-        </a>
-
-        <a href="/contact">
-            <button class="relative group">
-                Contact
-                <span
-                    class="absolute bottom-0 translate-y-0.5 left-1/2 h-0.5 w-0 bg-black transition-all duration-300 ease-out group-hover:left-0 group-hover:w-full"
-                ></span>
-            </button>
-        </a>
+        <HeaderLink text="Posts" link="/posts" currentPage={currentPage} />
+        <HeaderLink text="Resume" link="/resume" currentPage={currentPage} />
+        <HeaderLink text="Contact" link="/contact" currentPage={currentPage} />
     </div>
 </header>
