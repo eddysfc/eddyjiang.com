@@ -1,0 +1,14 @@
+---
+const { text, link, currentPage } = Astro.props;
+const isActive =
+    link === "/" ? currentPage === "/" : currentPage.startsWith(link);
+---
+
+<a href={link}>
+    <span class="relative group">
+        {text}
+        <span
+            class={`absolute bottom-0 translate-y-0.5 h-0.5 bg-black left-0 w-full ${isActive ? "opacity-100" : "opacity-0 transition-all duration-300 group-hover:opacity-100"}`}
+        ></span>
+    </span>
+</a>
