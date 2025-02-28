@@ -2,11 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import TypingIntro from "../components/TypingIntro";
 import Card from "../components/Card.astro";
+import { Image } from "astro:assets";
+import headshot from "../images/headshot.jpg";
 ---
 
 <Layout title="Home">
 	<div class="flex justify-center space-x-8 mt-20 items-center">
-		<div class="flex flex-col w-[600px] h-full">
+		<div class="flex flex-col w-[600px] h-full mt-5">
 			<h1 class="text-5xl">Hi! I'm Eddy.</h1>
 			<div class="text-5xl mt-2">
 				I'm a
@@ -20,9 +22,19 @@ import Card from "../components/Card.astro";
 			</p>
 		</div>
 
-		<div class="w-[320px] h-[320px] bg-blue-500"></div>
+		<div class="w-[320px] h-[320px] relative">
+			<div
+				class="absolute inset-0 translate-x-6 translate-y-6 bg-blue-500 rounded-lg"
+			>
+			</div>
+			<Image
+				src={headshot}
+				alt="Headshot of Eddy Jiang"
+				class="relative border-4 border-blue-400 rounded-lg"
+			/>
+		</div>
 	</div>
-	<div class="flex justify-center mt-20 space-x-16">
+	<div class="flex justify-center mt-24 space-x-16">
 		<Card
 			heading="Latest post:"
 			title="Hello, World!"
