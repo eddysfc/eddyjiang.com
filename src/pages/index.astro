@@ -4,6 +4,20 @@ import TypingIntro from "../components/TypingIntro";
 import Card from "../components/Card.astro";
 import { Image } from "astro:assets";
 import headshot from "../images/headshot.jpg";
+import { getCollection } from "astro:content";
+const posts = await getCollection("posts");
+
+const sortedPosts = posts.sort((a, b) => b.data.date - a.data.date);
+const newestPost = sortedPosts[0];
+
+const formatDate = (date: Date) => {
+	const formattedDate = new Intl.DateTimeFormat("en-US", {
+		year: "numeric",
+		month: "long",
+		day: "numeric",
+	}).format(date);
+	return formattedDate;
+};
 ---
 
 <Layout title="Home">
@@ -37,14 +51,16 @@ import headshot from "../images/headshot.jpg";
 	<div class="flex justify-center mt-24 space-x-16">
 		<Card
 			heading="Latest post:"
-			title="Hello, World!"
-			description="Hello, World!"
+			title={newestPost.data.title}
+			date={formatDate(newestPost.data.date)}
+			href={"posts/" + newestPost.slug}
 		/>
 
 		<Card
 			heading="What I'm working on:"
 			title="This website!"
-			description="It is indeed what I am working on"
+			date={formatDate(newestPost.data.date)}
+			href="/"
 		/>
 	</div>
 </Layout>
