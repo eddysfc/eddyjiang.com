@@ -12,11 +12,10 @@ const { heading, title, date, href } = Astro.props;
     <h2 class="text-3xl font-semibold">{heading}</h2>
     <h3 class="text-2xl text-blue-500 mt-6">{title}</h3>
     <p class="text-xl mt-2">{date}</p>
-    <a href={href}>
-        <button
-            class="mt-6 text-xl text-white bg-blue-500 px-4 py-1 rounded-lg duration-300 hover:bg-blue-400"
-        >
-            Read More
-        </button>
+    <a
+        href={href}
+        class="mt-6 inline-block text-xl text-white bg-blue-500 px-4 py-1 rounded-lg duration-300 hover:bg-blue-400"
+    >
+        Read More
     </a>
 </div>
