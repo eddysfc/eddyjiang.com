@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import self_image from "../images/self_image.jpg";
 ---
 
 <Layout title="About">
@@ -8,9 +10,17 @@ import Layout from "../layouts/Layout.astro";
             <div>
                 <h1 class="text-5xl font-semibold">About</h1>
                 <div class="text-2xl mt-8 leading-relaxed">
-                    <div
-                        class="w-[300px] h-[400px] bg-blue-500 mt-2 ml-12 float-right"
-                    >
+                    <div class="w-[400px] h-[600px] relative ml-12 float-right">
+                        <div
+                            class="absolute inset-0 translate-x-6 translate-y-6 bg-blue-500 rounded-lg"
+                        >
+                        </div>
+                        <Image
+                            src={self_image}
+                            alt="Photo of Eddy Jiang"
+                            class="relative border-4 border-blue-400 rounded-lg"
+                            loading="eager"
+                        />
                     </div>
                     <p>
                         Hi, I'm Eddy, a freshman at the University of Illinois
