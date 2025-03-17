@@ -3,13 +3,27 @@ import { useEffect, useState } from 'react'
 
 const TypingIntro = () => {
 
-    const words: string[] = ["student", "developer", "researcher", "SWE"];
+    const words: string[] = [
+        "student",
+        "developer",
+        "researcher",
+        "SWE",
+        "programmer",
+        "engineer",
+        "coder",
+        "hacker",
+        "leader",
+        "scientist",
+        "innovator",
+        "techie",
+        "learner",
+    ];
 
     const [curWord, setCurWord] = useState(words[Math.floor(Math.random() * words.length)]);
     const [wordPos, setWordPos] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
-    const [delay, setDelay] = useState(150);
+    const [delay, setDelay] = useState(100);
 
     useEffect(() => {
         const handleTyping = () => {
@@ -26,7 +40,7 @@ const TypingIntro = () => {
             }
             else {
                 if (wordPos === 0) {
-                    setDelay(2450);
+                    setDelay(1450);
                     setIsDeleting(false);
                     setIsPaused(true);
                     setCurWord(words[Math.floor(Math.random() * words.length)]);
@@ -45,7 +59,7 @@ const TypingIntro = () => {
     return (
         <div>
             <span>{curWord.substring(0, wordPos)}</span>
-            <span className={isPaused ? "animate-cursorBlink" : ""}>|</span>
+            <span className={isPaused ? "animate-cursor-blink" : ""}>|</span>
         </div>
     )
 }
