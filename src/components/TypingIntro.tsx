@@ -23,7 +23,7 @@ const TypingIntro = () => {
     const [wordPos, setWordPos] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
-    const [delay, setDelay] = useState(100);
+    const [delay, setDelay] = useState(150);
 
     useEffect(() => {
         const handleTyping = () => {
@@ -40,7 +40,7 @@ const TypingIntro = () => {
             }
             else {
                 if (wordPos === 0) {
-                    setDelay(1450);
+                    setDelay(2450);
                     setIsDeleting(false);
                     setIsPaused(true);
                     setCurWord(words[Math.floor(Math.random() * words.length)]);
