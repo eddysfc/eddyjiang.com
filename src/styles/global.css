@@ -17,13 +17,8 @@
 
 }
 
-@layer utilities {
-    .no-scrollbar::-webkit-scrollbar {
+@utility scrollbar-hidden {
+    &::-webkit-scrollbar {
         display: none;
-    }
-
-    .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
     }
 }
