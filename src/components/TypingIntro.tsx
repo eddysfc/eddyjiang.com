@@ -11,7 +11,6 @@ const TypingIntro = () => {
         "programmer",
         "engineer",
         "coder",
-        "hacker",
         "leader",
         "scientist",
         "innovator",
