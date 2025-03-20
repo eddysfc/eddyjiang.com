@@ -1,12 +1,11 @@
 ---
 import HeaderLink from "../components/HeaderLink.astro";
-import BigHeaderLink from "../components/BigHeaderLink.astro";
 
 const currentPage = Astro.url.pathname;
 ---
 
 <header class="flex justify-center items-center mt-4">
-    <div class="flex-1 text-2xl flex justify-evenly">
+    <div class="flex-1 flex justify-evenly">
         <HeaderLink text="About" link="/about" currentPage={currentPage} />
         <HeaderLink
             text="Projects"
@@ -20,9 +19,14 @@ const currentPage = Astro.url.pathname;
         />
     </div>
 
-    <BigHeaderLink text="Eddy Jiang" link="/" currentPage={currentPage} />
+    <HeaderLink
+        text="Eddy Jiang"
+        link="/"
+        currentPage={currentPage}
+        textSize="text-4xl"
+    />
 
-    <div class="flex-1 text-2xl flex justify-evenly">
+    <div class="flex-1 flex justify-evenly">
         <HeaderLink text="Posts" link="/posts" currentPage={currentPage} />
         <HeaderLink text="Resume" link="/resume" currentPage={currentPage} />
         <HeaderLink text="Contact" link="/contact" currentPage={currentPage} />

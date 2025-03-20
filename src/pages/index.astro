@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import TypingIntro from "../components/TypingIntro";
-import Card from "../components/Card.astro";
+import HomepageCard from "../components/HomepageCard.astro";
 import { Image } from "astro:assets";
 import headshot from "../images/headshot.jpg";
 import { getCollection } from "astro:content";
@@ -52,14 +52,14 @@ const formatDate = (date: Date) => {
 		</div>
 	</div>
 	<div class="flex justify-center mt-24 space-x-16">
-		<Card
+		<HomepageCard
 			heading="Latest post:"
 			title={newestPost.data.title}
 			date={formatDate(newestPost.data.date)}
 			href={"posts/" + newestPost.slug}
 		/>
 
-		<Card
+		<HomepageCard
 			heading="What I'm working on:"
 			title="This website!"
 			date={formatDate(newestPost.data.date)}

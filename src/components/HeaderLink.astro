@@ -1,10 +1,10 @@
 ---
-const { text, link, currentPage } = Astro.props;
+const { text, link, currentPage, textSize = "text-2xl" } = Astro.props;
 const isActive =
     link === "/" ? currentPage === "/" : currentPage.startsWith(link);
 ---
 
-<a href={link}>
+<a href={link} class={textSize}>
     <span class="relative group">
         {text}
         <span
