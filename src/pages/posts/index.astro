@@ -3,15 +3,6 @@ import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import PostCard from "../../components/PostCard.astro";
 const posts = await getCollection("posts");
-
-const formatDate = (date: Date) => {
-    const formattedDate = new Intl.DateTimeFormat("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-    }).format(date);
-    return formattedDate;
-};
 ---
 
 <Layout title="Posts">

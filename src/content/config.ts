@@ -13,11 +13,10 @@ const projectCollection = defineCollection({
     type: "content",
     schema: z.object({
         name: z.string(),
-        descriptionShort: z.optional(z.string()),
         description: z.optional(z.string()),
         startDate: z.optional(z.date()),
         endDate: z.optional(z.date()),
-        link: z.optional(z.string().url()),
+        links: z.optional(z.array(z.tuple([z.string(), z.string().url()]))),
     }),
 });
 

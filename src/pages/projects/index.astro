@@ -1,16 +1,31 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import ProjectCard from "../../components/ProjectCard.astro";
+const projects = await getCollection("projects");
 ---
 
 <Layout title="Projects">
     <div class="flex justify-center">
         <div class="w-3/4">
             <h1 class="text-5xl font-semibold">Projects</h1>
-            <div class="mt-8">
-                <p class="text-2xl leading-relaxed">
-                    Sorry, this page is still under construction. Please check
-                    back later!
-                </p>
+            <p class="text-2xl leading-relaxed mt-8">
+                Sorry, this page is still under construction. Please check back
+                later!
+            </p>
+            <div class="mt-8 grid grid-cols-3 justify-items-center">
+                {
+                    projects.map((project) => (
+                        <ProjectCard
+                            name={project.data.name}
+                            startDate={project.data.startDate}
+                            endDate={project.data.endDate}
+                            description={project.data.description}
+                            links={project.data.links}
+                            slug={project.slug}
+                        />
+                    ))
+                }
             </div>
         </div>
     </div>

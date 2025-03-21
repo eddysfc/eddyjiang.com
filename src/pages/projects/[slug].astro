@@ -16,14 +16,7 @@ export async function getStaticPaths() {
     }));
 }
 
-const formatDate = (date: Date | undefined) => {
-    const formattedDate = new Intl.DateTimeFormat("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-    }).format(date);
-    return formattedDate;
-};
+import { formatDate } from "../../utils/formatDate";
 ---
 
 <Layout title={project.data.name}>
