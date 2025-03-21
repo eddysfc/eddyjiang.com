@@ -1,43 +1,16 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { getCollection } from "astro:content";
-const projects = await getCollection("projects");
-
-const formatDate = (date: Date | undefined) => {
-    const formattedDate = new Intl.DateTimeFormat("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-    }).format(date);
-    return formattedDate;
-};
 ---
 
 <Layout title="Projects">
     <div class="flex justify-center">
-        <div class="w-[1100px]">
+        <div class="w-3/4">
             <h1 class="text-5xl font-semibold">Projects</h1>
             <div class="mt-8">
                 <p class="text-2xl leading-relaxed">
-                    Below is a timeline of the projects I have been working on.
                     Sorry, this page is still under construction. Please check
                     back later!
                 </p>
-                {
-                    projects.map((project) => (
-                        <article class="mt-12 mb-16 border border-gray-300 shadow-lg rounded-lg px-12 py-8">
-                            <h2 class="text-4xl text-blue-500">
-                                {project.data.name}
-                            </h2>
-                            <a
-                                href={`/projects/${project.slug}`}
-                                class="mt-6 inline-block text-2xl text-white bg-blue-500 px-4 py-1 rounded-lg duration-300 hover:bg-blue-400"
-                            >
-                                Read More
-                            </a>
-                        </article>
-                    ))
-                }
             </div>
         </div>
     </div>

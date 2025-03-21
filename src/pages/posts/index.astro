@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import PostCard from "../../components/PostCard.astro";
 const posts = await getCollection("posts");
 
 const formatDate = (date: Date) => {
@@ -15,7 +16,7 @@ const formatDate = (date: Date) => {
 
 <Layout title="Posts">
     <div class="flex justify-center">
-        <div class="w-[1100px]">
+        <div class="w-3/4">
             <h1 class="text-5xl font-semibold">Posts</h1>
             <div class="mt-8">
                 <p class="text-2xl leading-relaxed">
@@ -26,23 +27,12 @@ const formatDate = (date: Date) => {
                 </p>
                 {
                     posts.map((post) => (
-                        <article class="mt-12 mb-16 border border-gray-300 shadow-lg rounded-lg px-12 py-8">
-                            <h2 class="text-4xl text-blue-500">
-                                {post.data.title}
-                            </h2>
-                            <p class="mt-2 text-xl">
-                                {formatDate(post.data.date)}
-                            </p>
-                            <p class="mt-6 text-2xl leading-relaxed">
-                                {post.data.description}
-                            </p>
-                            <a
-                                href={`/posts/${post.slug}`}
-                                class="mt-6 inline-block text-2xl text-white bg-blue-500 px-4 py-1 rounded-lg duration-300 hover:bg-blue-400"
-                            >
-                                Read More
-                            </a>
-                        </article>
+                        <PostCard
+                            title={post.data.title}
+                            date={post.data.date}
+                            description={post.data.description}
+                            slug={post.slug}
+                        />
                     ))
                 }
             </div>
