@@ -12,6 +12,7 @@ const sortedPosts = posts.sort(
 );
 const newestPost = sortedPosts[0];
 import { formatDate } from "../utils/formatDate";
+import { date } from "astro/zod";
 ---
 
 <Layout title="Home">
@@ -54,8 +55,8 @@ import { formatDate } from "../utils/formatDate";
 		<HomepageCard
 			heading="What I'm working on:"
 			title="This website!"
-			date={formatDate(newestPost.data.date)}
-			href="/"
+			date="November 16, 2024"
+			href="/projects/personal-website"
 		/>
 	</div>
 </Layout>
