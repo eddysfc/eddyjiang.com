@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import Prose from "../../components/Prose.astro";
 const projects = await getCollection("projects");
 const { slug } = Astro.params;
 const project = projects.find((projects) => projects.slug === slug);
@@ -17,6 +18,7 @@ export async function getStaticPaths() {
 }
 
 import { formatDate } from "../../utils/formatDate";
+const { Content } = await project.render();
 ---
 
 <Layout title={project.data.name}>
@@ -58,8 +60,10 @@ import { formatDate } from "../../utils/formatDate";
             }
             {
                 project.body ? (
-                    <article class="mt-8 text-2xl leading-relaxed">
-                        {project.body}
+                    <article class="mt-8">
+                        <Prose>
+                            <Content />
+                        </Prose>
                     </article>
                 ) : project.data.description ? (
                     <article class="mt-8 text-2xl leading-relaxed">

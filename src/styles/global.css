@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin '@tailwindcss/typography';
 
 @theme {
     --animate-cursor-blink: cursor-blink 1s steps(1) infinite;
