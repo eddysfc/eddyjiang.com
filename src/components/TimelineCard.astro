@@ -1,0 +1,32 @@
+---
+const { name, description, association, startDate, endDate, link, slug } =
+    Astro.props;
+import { formatMonthYearDate } from "../utils/formatMonthYearDate";
+---
+
+<article class="border border-gray-300 shadow-lg rounded-lg px-12 py-8">
+    <h2 class="text-4xl text-blue-500">
+        {name}
+    </h2>
+    {
+        startDate ? (
+            <span class="mt-4 flex items-center">
+                <p class="text-2xl">
+                    {formatMonthYearDate(startDate)} -
+                    {endDate ? formatMonthYearDate(endDate) : "Present"}
+                </p>
+            </span>
+        ) : null
+    }
+    {
+        description ? (
+            <p class="mt-4 text-2xl leading-relaxed">{description}</p>
+        ) : null
+    }
+    <a
+        href={`/research/${slug}`}
+        class="mt-4 inline-block text-2xl text-white bg-blue-500 px-4 py-1 rounded-lg duration-300 hover:bg-blue-400"
+    >
+        Read More
+    </a>
+</article>

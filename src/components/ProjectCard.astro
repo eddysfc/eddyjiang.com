@@ -5,8 +5,8 @@ import { FaRegCalendar } from "react-icons/fa6";
 import { FaLink } from "react-icons/fa6";
 ---
 
-<div class="w-9/10 border border-gray-300 shadow-lg rounded-lg px-8 py-6">
-    <h2 class="text-2xl text-blue-500">{name}</h2>
+<article class="w-9/10 border border-gray-300 shadow-lg rounded-lg px-8 py-6">
+    <h2 class="text-3xl text-blue-500">{name}</h2>
     {
         startDate ? (
             <span class="mt-4 flex items-center">
@@ -34,11 +34,15 @@ import { FaLink } from "react-icons/fa6";
               ))
             : null
     }
-    {description ? <p class="mt-4 text-xl">{description}</p> : null}
+    {
+        description ? (
+            <p class="mt-4 text-xl leading-relaxed">{description}</p>
+        ) : null
+    }
     <a
         href={`/projects/${slug}`}
         class="mt-4 inline-block text-xl text-white bg-blue-500 px-4 py-1 rounded-lg duration-300 hover:bg-blue-400"
     >
         Read More
     </a>
-</div>
+</article>

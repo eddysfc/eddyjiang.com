@@ -20,7 +20,21 @@ const projectCollection = defineCollection({
     }),
 });
 
+const researchCollection = defineCollection({
+    type: "content",
+    schema: z.object({
+        name: z.string(),
+        description: z.optional(z.string()),
+        association: z.optional(z.tuple([z.string(), z.optional(z.string().url())])),
+        startDate: z.optional(z.date()),
+        endDate: z.optional(z.date()),
+        link: z.optional(z.tuple([z.string(), z.string().url()])),
+    }),
+});
+
+
 export const collections = {
     posts: postCollection,
     projects: projectCollection,
+    research: researchCollection
 };

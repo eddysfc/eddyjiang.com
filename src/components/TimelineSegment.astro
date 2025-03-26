@@ -1,0 +1,21 @@
+---
+const { name, description, association, startDate, endDate, link, slug } =
+    Astro.props;
+import TimelineCard from "./TimelineCard.astro";
+---
+
+<div class="relative pl-8 mt-8 mb-12">
+    <div
+        class="absolute -left-[9px] top-1/2 transform -translate-y-1/2 h-4 w-4 rounded-full bg-blue-500"
+    >
+    </div>
+    <TimelineCard
+        name={name}
+        association={association}
+        startDate={startDate}
+        endDate={endDate}
+        description={description}
+        link={link}
+        slug={slug}
+    />
+</div>
