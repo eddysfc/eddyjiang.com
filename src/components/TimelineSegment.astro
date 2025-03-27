@@ -1,5 +1,5 @@
 ---
-const { name, description, association, startDate, endDate, link, slug } =
+const { name, description, association, startDate, endDate, links, slug } =
     Astro.props;
 import TimelineCard from "./TimelineCard.astro";
 ---
@@ -15,7 +15,7 @@ import TimelineCard from "./TimelineCard.astro";
         startDate={startDate}
         endDate={endDate}
         description={description}
-        link={link}
+        links={links}
         slug={slug}
     />
 </div>

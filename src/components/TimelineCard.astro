@@ -1,7 +1,17 @@
 ---
-const { name, description, association, startDate, endDate, link, slug } =
+const { name, description, association, startDate, endDate, links, slug } =
     Astro.props;
 import { formatMonthYearDate } from "../utils/formatMonthYearDate";
+
+const isIndependent = association === "independent";
+const profs = !isIndependent && association.filter(([type]: [string, string, string?]) => type === "prof");
+const lab = !isIndependent && association.find(([type]: [string, string, string?]) => type === "lab");
+
+import { FaUser } from "react-icons/fa6";
+import { FaUsers } from "react-icons/fa6";
+import { FaFlask } from "react-icons/fa6";
+import { FaRegCalendar } from "react-icons/fa6";
+import { FaLink } from "react-icons/fa6";
 ---
 
 <article class="border border-gray-300 shadow-lg rounded-lg px-12 py-8">
@@ -9,19 +19,72 @@ import { formatMonthYearDate } from "../utils/formatMonthYearDate";
         {name}
     </h2>
     {
-        startDate ? (
-            <span class="mt-4 flex items-center">
-                <p class="text-2xl">
+        association && (
+            <div class="mt-4 flex items-center">
+                {isIndependent ? (
+                    <FaUser size={24} />
+                    <p class="text-2xl ml-2">Independent</p>
+                ) : (
+                    profs.length > 0 ? (
+                        <FaUsers size={24} />
+                        <p class="text-2xl ml-2">
+                            Under
+                            {
+                                profs.map(([, name, homepageLink]: [string, string, string?], index: number) => (
+                                    <>
+                                        {index > 0 && ", "}
+                                        {homepageLink ? <a href={homepageLink} target="_blank" class="text-blue-500 hover:text-blue-400 duration-300">{"Professor " + name}</a> : <span>{"Professor " + name}</span>}
+                                    </>
+                                ))
+                            }
+                            {
+                                lab && (
+                                    <>
+                                        in the
+                                        {lab[2] ? <a href={lab[2]} target="_blank" class="text-blue-500 hover:text-blue-400 duration-300">{lab[1]}</a> : <span>{lab[1]}</span>}
+                                    </>
+                                )
+                            }
+                        </p>
+                    ) : (
+                        <FaFlask size={24} />
+                        <p class="text-2xl ml-2">
+                            In the {lab[2] ? <a href={lab[2]} target="_blank" class="text-blue-500 hover:text-blue-400 duration-300">{lab[1]}</a> : <span>{lab[1]}</span>}
+                        </p>
+                    )
+                )}
+            </div>
+        )
+    }
+    {
+        startDate && (
+            <div class="mt-4 flex items-center">
+                <FaRegCalendar size={24} />
+                <p class="text-2xl ml-2">
                     {formatMonthYearDate(startDate)} -
                     {endDate ? formatMonthYearDate(endDate) : "Present"}
                 </p>
-            </span>
-        ) : null
+            </div>
+        )
     }
     {
-        description ? (
+        links && links.map((link: [string, string]) => (
+            <span class="mt-4 flex items-center">
+                <FaLink size={24} />
+                <a
+                    class="text-2xl text-blue-500 hover:text-blue-400 duration-300 ml-2"
+                    href={link[1]}
+                    target="_blank"
+                >
+                    {link[0]}
+                </a>
+            </span>
+        ))
+    }
+    {
+        description && (
             <p class="mt-4 text-2xl leading-relaxed">{description}</p>
-        ) : null
+        )
     }
     <a
         href={`/research/${slug}`}
