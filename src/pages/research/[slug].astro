@@ -34,13 +34,30 @@ const { Content } = await r.render();
                 {r.data.name}
             </h1>
             {
-                r.data.startDate ? (
+                r.data.startDate && (
                     <p class="mt-8 text-2xl">
                         {formatMonthYearDate(r.data.startDate)} -
                         {r.data.endDate
                             ? formatMonthYearDate(r.data.endDate)
                             : "Present"}
                     </p>
+                )
+            }
+            {
+                r.data.links ? (
+                    <ul class="list-disc ml-8 mt-4">
+                        {r.data.links.map((link: [string, string]) => (
+                            <li class="mt-2 text-2xl">
+                                <a
+                                    class="ml-2 text-blue-500 hover:text-blue-400 duration-300"
+                                    href={link[1]}
+                                    target="_blank"
+                                >
+                                    {link[0]}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
                 ) : null
             }
             {
@@ -50,11 +67,13 @@ const { Content } = await r.render();
                             <Content />
                         </Prose>
                     </article>
-                ) : r.data.description ? (
-                    <article class="mt-8 text-2xl leading-relaxed">
-                        {r.data.description}
-                    </article>
-                ) : null
+                ) : (
+                    r.data.description && (
+                        <article class="mt-8 text-2xl leading-relaxed">
+                            {r.data.description}
+                        </article>
+                    )
+                )
             }
         </div>
     </div>
