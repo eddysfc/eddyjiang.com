@@ -30,7 +30,9 @@ const { Content } = await project.render();
             >
                 Back to Projects
             </a>
-            <h1 class="text-5xl font-semibold">{project.data.name}</h1>
+            <h1 class="text-5xl font-semibold w-4/5 leading-[1.25]">
+                {project.data.name}
+            </h1>
             {
                 project.data.startDate ? (
                     <p class="mt-8 text-2xl">
