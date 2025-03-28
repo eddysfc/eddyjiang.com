@@ -5,10 +5,6 @@ import { ClientRouter } from "astro:transitions";
 import { fade } from "astro:transitions";
 import "../styles/global.css";
 
-interface Props {
-	title: string;
-}
-
 const { title } = Astro.props;
 ---
 
@@ -18,13 +14,13 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Home" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<title>Eddy Jiang | {title}</title>
 		<ClientRouter />
 	</head>
-	<body class="scrollbar-hidden">
+	<body class="scrollbar-hidden flex flex-col min-h-screen">
 		<Header />
-		<div class="mt-20">
+		<div class="flex-grow">
 			<slot />
 		</div>
 		<Footer />

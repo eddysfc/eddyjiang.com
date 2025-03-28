@@ -18,63 +18,59 @@ export async function getStaticPaths() {
 }
 
 import { formatMonthYearDate } from "../../utils/formatMonthYearDate";
+import ContentLayout from "../../layouts/ContentLayout.astro";
 const { Content } = await r.render();
 ---
 
 <Layout title={r.data.name}>
-    <div class="flex justify-center">
-        <div class="w-3/4 relative">
-            <a
-                href="/research/"
-                class="absolute right-0 top-0 text-2xl text-white bg-blue-500 px-4 py-1 rounded-lg duration-300 hover:bg-blue-400"
-            >
-                Back to Research
-            </a>
-            <h1 class="text-5xl font-semibold w-4/5 leading-[1.25]">
-                {r.data.name}
-            </h1>
-            {
-                r.data.startDate && (
-                    <p class="mt-8 text-2xl">
-                        {formatMonthYearDate(r.data.startDate)} -
-                        {r.data.endDate
-                            ? formatMonthYearDate(r.data.endDate)
-                            : "Present"}
-                    </p>
-                )
-            }
-            {
-                r.data.links ? (
-                    <ul class="list-disc ml-8 mt-4">
-                        {r.data.links.map((link: [string, string]) => (
-                            <li class="mt-2 text-2xl">
-                                <a
-                                    class="ml-2 text-blue-500 hover:text-blue-400 duration-300"
-                                    href={link[1]}
-                                    target="_blank"
-                                >
-                                    {link[0]}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                ) : null
-            }
-            {
-                r.body ? (
-                    <article class="mt-8">
-                        <Prose>
-                            <Content />
-                        </Prose>
+    <ContentLayout title={r.data.name}>
+        <a
+            href="/research/"
+            class="absolute right-0 top-0 text-2xl text-white bg-blue-500 px-4 py-1 rounded-lg duration-300 hover:bg-blue-400"
+        >
+            Back to Research
+        </a>
+        {
+            r.data.startDate && (
+                <p class="mt-8 text-2xl">
+                    {formatMonthYearDate(r.data.startDate)} -
+                    {r.data.endDate
+                        ? formatMonthYearDate(r.data.endDate)
+                        : "Present"}
+                </p>
+            )
+        }
+        {
+            r.data.links ? (
+                <ul class="list-disc ml-8 mt-4">
+                    {r.data.links.map((link: [string, string]) => (
+                        <li class="mt-2 text-2xl">
+                            <a
+                                class="ml-2 text-blue-500 hover:text-blue-400 duration-300"
+                                href={link[1]}
+                                target="_blank"
+                            >
+                                {link[0]}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            ) : null
+        }
+        {
+            r.body ? (
+                <article class="mt-8">
+                    <Prose>
+                        <Content />
+                    </Prose>
+                </article>
+            ) : (
+                r.data.description && (
+                    <article class="mt-8 text-2xl leading-relaxed">
+                        {r.data.description}
                     </article>
-                ) : (
-                    r.data.description && (
-                        <article class="mt-8 text-2xl leading-relaxed">
-                            {r.data.description}
-                        </article>
-                    )
                 )
-            }
-        </div>
-    </div>
+            )
+        }
+    </ContentLayout>
 </Layout>

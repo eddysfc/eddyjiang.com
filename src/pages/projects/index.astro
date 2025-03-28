@@ -1,34 +1,32 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import ContentLayout from "../../layouts/ContentLayout.astro";
 import { getCollection } from "astro:content";
 import ProjectCard from "../../components/ProjectCard.astro";
 const projects = await getCollection("projects");
 ---
 
 <Layout title="Projects">
-    <div class="flex justify-center">
-        <div class="w-3/4">
-            <h1 class="text-5xl font-semibold">Projects</h1>
-            <p class="text-2xl leading-relaxed mt-8">
-                Below is a list of the projects I have been working on,
-                including things I have built and ones I am actively
-                contributing to. I try to keep this page updated as I explore
-                new tools, technologies, and collaborations.
-            </p>
-            <div class="mt-8 grid grid-cols-3 justify-items-center">
-                {
-                    projects.map((project) => (
-                        <ProjectCard
-                            name={project.data.name}
-                            startDate={project.data.startDate}
-                            endDate={project.data.endDate}
-                            description={project.data.description}
-                            links={project.data.links}
-                            slug={project.slug}
-                        />
-                    ))
-                }
-            </div>
+    <ContentLayout title="Projects">
+        <p class="text-2xl leading-relaxed mt-8">
+            Below is a list of the projects I have been working on, including
+            things I have built and ones I am actively contributing to. I try to
+            keep this page updated as I explore new tools, technologies, and
+            collaborations.
+        </p>
+        <div class="mt-8 grid grid-cols-3 justify-items-center">
+            {
+                projects.map((project) => (
+                    <ProjectCard
+                        name={project.data.name}
+                        startDate={project.data.startDate}
+                        endDate={project.data.endDate}
+                        description={project.data.description}
+                        links={project.data.links}
+                        slug={project.slug}
+                    />
+                ))
+            }
         </div>
-    </div>
+    </ContentLayout>
 </Layout>

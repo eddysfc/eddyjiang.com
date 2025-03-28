@@ -2,31 +2,29 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import PostCard from "../../components/PostCard.astro";
+import ContentLayout from "../../layouts/ContentLayout.astro";
 const posts = await getCollection("posts");
 ---
 
 <Layout title="Posts">
-    <div class="flex justify-center">
-        <div class="w-3/4">
-            <h1 class="text-5xl font-semibold">Posts</h1>
-            <div class="mt-8">
-                <p class="text-2xl leading-relaxed">
-                    This is a collection of writings I have done about my
-                    projects and various other topics that I am interested in. I
-                    try to make these on a semi-regular basis to share ideas,
-                    discuss technical details, and reflect on lessons learned.
-                </p>
-                {
-                    posts.map((post) => (
-                        <PostCard
-                            title={post.data.title}
-                            date={post.data.date}
-                            description={post.data.description}
-                            slug={post.slug}
-                        />
-                    ))
-                }
-            </div>
+    <ContentLayout title="Posts">
+        <div class="mt-8">
+            <p class="text-2xl leading-relaxed">
+                This is a collection of writings I have done about my projects
+                and various other topics that I am interested in. I try to make
+                these on a semi-regular basis to share ideas, discuss technical
+                details, and reflect on lessons learned.
+            </p>
+            {
+                posts.map((post) => (
+                    <PostCard
+                        title={post.data.title}
+                        date={post.data.date}
+                        description={post.data.description}
+                        slug={post.slug}
+                    />
+                ))
+            }
         </div>
-    </div>
+    </ContentLayout>
 </Layout>

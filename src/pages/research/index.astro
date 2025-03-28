@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import TimelineSegment from "../../components/TimelineSegment.astro";
+import ContentLayout from "../../layouts/ContentLayout.astro";
 const research = await getCollection("research");
 
 const sortedResearch = research.sort((a, b) => {
@@ -12,30 +13,27 @@ const sortedResearch = research.sort((a, b) => {
 ---
 
 <Layout title="Research">
-    <div class="flex justify-center">
-        <div class="w-3/4">
-            <h1 class="text-5xl font-semibold">Research</h1>
-            <p class="text-2xl leading-relaxed mt-8">
-                Here is a timeline of the research I have worked on, including
-                independent projects, collaboration in labs, and academic
-                contributions. I aim to document both the process and outcomes
-                of my work.
-            </p>
-            <div class="mt-8 border-l-2 border-blue-500">
-                {
-                    sortedResearch.map((r) => (
-                        <TimelineSegment
-                            name={r.data.name}
-                            association={r.data.association}
-                            startDate={r.data.startDate}
-                            endDate={r.data.endDate}
-                            description={r.data.description}
-                            links={r.data.links}
-                            slug={r.slug}
-                        />
-                    ))
-                }
-            </div>
+    <ContentLayout title="Research">
+        <p class="text-2xl leading-relaxed mt-8">
+            Here is a timeline of the research I have worked on, including
+            independent projects, collaboration in labs, and academic
+            contributions. I aim to document both the process and outcomes of my
+            work.
+        </p>
+        <div class="mt-8 border-l-2 border-blue-500">
+            {
+                sortedResearch.map((r) => (
+                    <TimelineSegment
+                        name={r.data.name}
+                        association={r.data.association}
+                        startDate={r.data.startDate}
+                        endDate={r.data.endDate}
+                        description={r.data.description}
+                        links={r.data.links}
+                        slug={r.slug}
+                    />
+                ))
+            }
         </div>
-    </div>
+    </ContentLayout>
 </Layout>

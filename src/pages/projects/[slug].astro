@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import ContentLayout from "../../layouts/ContentLayout.astro";
 import { getCollection } from "astro:content";
 import Prose from "../../components/Prose.astro";
 const projects = await getCollection("projects");
@@ -22,57 +23,52 @@ const { Content } = await project.render();
 ---
 
 <Layout title={project.data.name}>
-    <div class="flex justify-center">
-        <div class="w-3/4 relative">
-            <a
-                href="/projects/"
-                class="absolute right-0 top-0 text-2xl text-white bg-blue-500 px-4 py-1 rounded-lg duration-300 hover:bg-blue-400"
-            >
-                Back to Projects
-            </a>
-            <h1 class="text-5xl font-semibold w-4/5 leading-[1.25]">
-                {project.data.name}
-            </h1>
-            {
-                project.data.startDate ? (
-                    <p class="mt-8 text-2xl">
-                        {formatDate(project.data.startDate)} -
-                        {project.data.endDate
-                            ? formatDate(project.data.endDate)
-                            : "Present"}
-                    </p>
-                ) : null
-            }
-            {
-                project.data.links ? (
-                    <ul class="list-disc ml-8 mt-4">
-                        {project.data.links.map((link: [string, string]) => (
-                            <li class="mt-2 text-2xl">
-                                <a
-                                    class="ml-2 text-blue-500 hover:text-blue-400 duration-300"
-                                    href={link[1]}
-                                    target="_blank"
-                                >
-                                    {link[0]}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                ) : null
-            }
-            {
-                project.body ? (
-                    <article class="mt-8">
-                        <Prose>
-                            <Content />
-                        </Prose>
-                    </article>
-                ) : project.data.description ? (
-                    <article class="mt-8 text-2xl leading-relaxed">
-                        {project.data.description}
-                    </article>
-                ) : null
-            }
-        </div>
-    </div>
+    <ContentLayout title={project.data.name}>
+        {
+            project.data.startDate ? (
+                <p class="mt-8 text-2xl">
+                    {formatDate(project.data.startDate)} -
+                    {project.data.endDate
+                        ? formatDate(project.data.endDate)
+                        : "Present"}
+                </p>
+            ) : null
+        }
+        <a
+            href="/projects/"
+            class="absolute right-0 top-0 text-2xl text-white bg-blue-500 px-4 py-1 rounded-lg duration-300 hover:bg-blue-400"
+        >
+            Back to Projects
+        </a>
+        {
+            project.data.links ? (
+                <ul class="list-disc ml-8 mt-4">
+                    {project.data.links.map((link: [string, string]) => (
+                        <li class="mt-2 text-2xl">
+                            <a
+                                class="ml-2 text-blue-500 hover:text-blue-400 duration-300"
+                                href={link[1]}
+                                target="_blank"
+                            >
+                                {link[0]}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            ) : null
+        }
+        {
+            project.body ? (
+                <article class="mt-8">
+                    <Prose>
+                        <Content />
+                    </Prose>
+                </article>
+            ) : project.data.description ? (
+                <article class="mt-8 text-2xl leading-relaxed">
+                    {project.data.description}
+                </article>
+            ) : null
+        }
+    </ContentLayout>
 </Layout>

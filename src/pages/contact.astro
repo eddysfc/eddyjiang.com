@@ -1,29 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ContentLayout from "../layouts/ContentLayout.astro";
 ---
 
 <Layout title="Contact">
-    <div class="flex justify-center">
-        <div class="w-3/4">
-            <h1 class="text-5xl font-semibold">Contact</h1>
-            <div class="text-2xl leading-relaxed">
-                <p class="mt-8">
-                    I am reachable via email at <code class="text-blue-500"
-                        >hello at eddyjiang dot com</code
-                    >. For genuine inquiries about myself and my work, I will
-                    try to respond as punctually as possible!
-                </p>
-                <p class="mt-8">
-                    For Discord and other chat platforms, I do not generally
-                    accept friend requests from strangers. If you would like to
-                    talk more casually, please send me an email first.
-                </p>
-                <p class="mt-8">
-                    I can also be found on GitHub and LinkedIn <code
-                        class="text-blue-500">@eddysfc</code
-                    >.
-                </p>
-            </div>
+    <ContentLayout title="Contact">
+        <div class="text-2xl leading-relaxed">
+            <p class="mt-8">
+                I am reachable via email at <code class="text-blue-500"
+                    >hello at eddyjiang dot com</code
+                >. For genuine inquiries about myself and my work, I will try to
+                respond as punctually as possible!
+            </p>
+            <p class="mt-8">
+                For Discord and other chat platforms, I do not generally accept
+                friend requests from strangers. If you would like to talk more
+                casually, please send me an email first.
+            </p>
+            <p class="mt-8">
+                I can also be found on GitHub and LinkedIn <code
+                    class="text-blue-500">@eddysfc</code
+                >.
+            </p>
         </div>
-    </div>
+    </ContentLayout>
 </Layout>

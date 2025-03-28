@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import ContentLayout from "../../layouts/ContentLayout.astro";
 import { getCollection } from "astro:content";
 import Prose from "../../components/Prose.astro";
 const posts = await getCollection("posts");
@@ -22,25 +23,20 @@ const { Content } = await post.render();
 ---
 
 <Layout title={post.data.title}>
-    <div class="flex justify-center">
-        <div class="w-3/4 relative">
-            <a
-                href="/posts/"
-                class="absolute right-0 top-0 text-2xl text-white bg-blue-500 px-4 py-1 rounded-lg duration-300 hover:bg-blue-400"
-            >
-                Back to Posts
-            </a>
-            <h1 class="text-5xl font-semibold w-4/5 leading-[1.25]">
-                {post.data.title}
-            </h1>
-            <p class="mt-8 text-2xl">
-                {formatDate(post.data.date)}
-            </p>
-            <article class="mt-8">
-                <Prose>
-                    <Content />
-                </Prose>
-            </article>
-        </div>
-    </div>
+    <ContentLayout title={post.data.title}>
+        <a
+            href="/posts/"
+            class="absolute right-0 top-0 text-2xl text-white bg-blue-500 px-4 py-1 rounded-lg duration-300 hover:bg-blue-400"
+        >
+            Back to Posts
+        </a>
+        <p class="mt-8 text-2xl">
+            {formatDate(post.data.date)}
+        </p>
+        <article class="mt-8">
+            <Prose>
+                <Content />
+            </Prose>
+        </article>
+    </ContentLayout>
 </Layout>
