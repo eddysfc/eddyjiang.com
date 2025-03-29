@@ -6,7 +6,19 @@ import ContentLayout from "../layouts/ContentLayout.astro";
 <Layout title="Resume">
     <ContentLayout title="Resume">
         <div class="text-2xl leading-relaxed">
-            <p class="mt-8">Resume</p>
+            <p class="mt-8">
+                A sanitized version of my resume is accessible by clicking the
+                button below. If you are a recruiter looking for my full resume,
+                please reach out through the Contact page!
+            </p>
+            <div class="flex justify-center mt-8">
+                <a
+                    href="/Eddy_Jiang_Resume.pdf"
+                    class="text-2xl text-white bg-blue-500 px-4 py-1 rounded-lg duration-300 hover:bg-blue-400"
+                >
+                    Check Out My Resume!
+                </a>
+            </div>
         </div>
     </ContentLayout>
 </Layout>
