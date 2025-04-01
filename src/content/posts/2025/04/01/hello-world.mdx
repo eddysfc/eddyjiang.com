@@ -6,10 +6,19 @@ slug: "2025-04-01-hello-world"
 ---
 
 import Component from "./Component";
+import { Image } from "astro:assets";
+import lighthouse from "./lighthouse.png";
 
 No, this isn't an April Fools joke. It's finally here! After riffling through hundreds of documentation pages, looping the same song for hours while debugging, and downing maybe one too many energy drinks, I'm finally happy to call this passion project done.
 
 This website was built with [Astro](https://astro.build/), a JavaScript framework optimized for generating static sites. Thanks to its [islands architecture](https://docs.astro.build/en/concepts/islands/), the few interactive components, written using React and TypeScript (explicit typing, baby!), are only hydrated when loaded, boosting performance and reducing overhead. Basically, this site is really, really fast.
+
+<div className="flex justify-center items-center">
+    <div className="flex flex-col items-center">
+        <Image src={lighthouse} className="w-2/3" alt="Google Lighthouse report for the home page" />
+        <span className="text-center">Almost perfect Google Lighthouse scores for the home page!</span>
+    </div>
+</div>
 
 I used [Tailwind CSS](https://tailwindcss.com/) for styling because of its flexibility and modular utility classes. This functionality will also allow me to easily implement dark mode and responsive design once I get around to them (more on that below).
 

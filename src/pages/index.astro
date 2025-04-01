@@ -6,13 +6,20 @@ import { Image } from "astro:assets";
 import headshot from "../images/headshot.jpg";
 import { getCollection } from "astro:content";
 const posts = await getCollection("posts");
+const projects = await getCollection("projects");
 
 const sortedPosts = posts.sort(
 	(a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
+const sortedProjects = projects.sort((a, b) => {
+	const aStartDate = a.data.endDate ? a.data.endDate.getTime() : -Infinity;
+	const bStartDate = b.data.endDate ? b.data.endDate.getTime() : -Infinity;
+	return aStartDate - bStartDate;
+});
+
 const newestPost = sortedPosts[0];
+const newestProject = sortedProjects[0];
 import { formatDate } from "../utils/formatDate";
-import { date } from "astro/zod";
 ---
 
 <Layout title="Home">
@@ -48,15 +55,17 @@ import { date } from "astro/zod";
 		<HomepageCard
 			heading="Latest post:"
 			title={newestPost.data.title}
-			date={formatDate(newestPost.data.date)}
+			date={"Posted " + formatDate(newestPost.data.date)}
 			href={"posts/" + newestPost.slug}
 		/>
 
 		<HomepageCard
 			heading="What I'm working on:"
-			title="This website!"
-			date="November 16, 2024"
-			href="/projects/personal-website"
+			title={newestProject.data.name}
+			date={newestProject.data.endDate
+				? "Ended " + formatDate(newestProject.data.endDate)
+				: "Currently ongoing!"}
+			href={"projects/" + newestProject.slug}
 		/>
 	</div>
 </Layout>
