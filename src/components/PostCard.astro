@@ -1,6 +1,7 @@
 ---
 const { title, date, description, slug } = Astro.props;
 import { formatDate } from "../utils/formatDate";
+import { FaRegCalendar } from "react-icons/fa6";
 ---
 
 <article
@@ -9,9 +10,12 @@ import { formatDate } from "../utils/formatDate";
     <h2 class="text-4xl text-blue-500">
         {title}
     </h2>
-    <p class="mt-4 text-2xl">
-        {formatDate(date)}
-    </p>
+    <div class="mt-4 flex items-center">
+        <FaRegCalendar size={24} />
+        <span class="ml-2 text-2xl">
+            {formatDate(date)}
+        </span>
+    </div>
     <p class="mt-4 text-2xl leading-relaxed">
         {description}
     </p>

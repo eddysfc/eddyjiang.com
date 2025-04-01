@@ -1,0 +1,42 @@
+---
+title: "Hello, World!"
+description: "Celebrating the launch of my website, explaining how I created it, and discussing what I want to do next."
+date: 2025-04-01
+slug: "2025-04-01-hello-world"
+---
+
+import Component from "./Component";
+
+No, this isn't an April Fools joke. It's finally here! After riffling through hundreds of documentation pages, looping the same song for hours while debugging, and downing maybe one too many energy drinks, I'm finally happy to call this passion project done.
+
+This website was built with [Astro](https://astro.build/), a JavaScript framework optimized for generating static sites. Thanks to its [islands architecture](https://docs.astro.build/en/concepts/islands/), the few interactive components, written using React and TypeScript (explicit typing, baby!), are only hydrated when loaded, boosting performance and reducing overhead. Basically, this site is really, really fast.
+
+I used [Tailwind CSS](https://tailwindcss.com/) for styling because of its flexibility and modular utility classes. This functionality will also allow me to easily implement dark mode and responsive design once I get around to them (more on that below).
+
+Being a very content-focused site (by the way, feel free to take a shot of your preferred age-appropriate beverage every time I say "content"), I used Astro's [content collections](https://docs.astro.build/en/guides/content-collections/) to manage the different types of content I wanted to showcase (blog posts, projects, and research experiences). I leveraged [Zod](https://zod.dev/) to define metadata schemas for each content type and enforce type safety (which has saved me hours of painstaking debugging caused by oh-so-human mistakes). This content is then stored in [MDX](https://mdxjs.com/) files, which can be rendered using the [Tailwind CSS Typography](https://github.com/tailwindlabs/tailwindcss-typography) plugin while also allowing dynamic components to be embedded, like this:
+
+<Component client:load />
+
+Some other notable features of this website include:
+- Conditional rendering for card elements based on defined fields
+- Time-ordered content fetching (latest post/project shown on the home page)
+- Custom email domain (check out the Contact page!)
+- Cool typing intro on the homepage 😎
+- Smooth transitions for page navigation
+
+The source code for everything on this site is available on my [GitHub](https://github.com/eddysfc/eddyjiang.com)!
+
+While I'm happy to call this site done for now, there are definitely more features I plan on adding in the future. These are, in no particular order:
+- Dark mode
+- Issue/feedback reporting (most likely on GitHub)
+- Making everything A11y friendly
+- Mobile support (responsive design)
+- More blog content!
+- Comments on posts
+- Newsletter?
+
+There were some ups and downs in the development process, like dealing with a package update that broke half my dependencies (classic). However, overall, this project was a great learning experience for familiarizing myself with a modern front-end tech stack. Dealing with these technical hurdles (and constantly wrestling with scope creep every time I wanted to wrap up) taught me to think more critically about deliberately applying sustainable development practices, like componentization, refactoring, and using developer tools like Google Lighthouse to guide performance and accessibility improvements.
+
+Over the next few weeks, I will be working on porting the contents of my resume to this site, expanding on each experience with more depth and personal context. Afterward, I'm planning on working on some full-stack and more technically challenging SWE projects. Be sure to keep an eye on the Projects page for updates!
+
+Thanks for checking out my site and taking the time to read this!
